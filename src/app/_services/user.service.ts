@@ -8,16 +8,20 @@ import { User } from '../_models/user';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = environment.APIEndpoint;
+  baseUrl = `${environment.APIEndpoint}apiusers/`;
 
   constructor(private http: HttpClient) {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}apiusers`);
+    return this.http.get<User[]>(this.baseUrl);
   }
 
   getUser(id): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}apiusers/${id}`);
+    return this.http.get<User>(`${this.baseUrl}${id}`);
+  }
+
+  updateUser(id: number, user: User) {
+    return this.http.put(`${this.baseUrl}${id}`, user);
   }
 }

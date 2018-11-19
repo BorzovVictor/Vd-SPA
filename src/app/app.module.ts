@@ -8,8 +8,11 @@ import { environment } from '../environments/environment';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
-import { MemberDetailRtesolver } from './_resolves/member-detail.rtesolver';
-import { MemberListRtesolver } from './_resolves/member-list.rtesolver';
+
+// resolvers
+import { MemberDetailResolver } from './_resolves/member-detail.resolver';
+import { MemberListResolver } from './_resolves/member-list.resolver';
+import { MemberEditResolver } from './_resolves/member-edit.resolver';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -23,6 +26,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 export function tokenGetter() {
   return localStorage.getItem(environment.tokenName);
@@ -38,7 +42,8 @@ export function tokenGetter() {
     ListsComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +64,9 @@ export function tokenGetter() {
   providers: [
     ErrorInterceptorProvider,
     AuthGuard,
-    MemberDetailRtesolver,
-    MemberListRtesolver
+    MemberDetailResolver,
+    MemberListResolver,
+    MemberEditResolver
   ],
   bootstrap: [
     AppComponent
