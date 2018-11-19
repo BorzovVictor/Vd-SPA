@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   login(model: any): Observable<any> {
-    return this.http.post(environment.APIEndpoint + '/auth/login', model)
+    return this.http.post(environment.APIEndpoint + 'auth/login', model)
       .pipe(map((response: any) => {
         const user = response;
         if (user) {
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   register(model: any) {
-    return this.http.post(environment.APIEndpoint + '/auth/register', model);
+    return this.http.post(environment.APIEndpoint + 'auth/register', model);
   }
 
   loggedIn() {
