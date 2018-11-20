@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { Menu } from '../_models/menu';
 
 @Component({
   selector: 'app-nav',
@@ -10,11 +11,17 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-
+  links: Menu[] = [];
   constructor(private authService: AuthService, private alertify: AlertifyService, private router: Router) {
   }
 
   ngOnInit() {
+    this.links.push(
+      {name: 'Matches', path: '/members', icon: 'fa fa-users'},
+      {name: 'List', path: '/lists', icon: 'fa fa-list-ol'},
+      {name: 'Messages', path: '/messages', icon: 'fa fa-commenting-o'}
+    );
+    console.log('load menu');
   }
 
   login() {

@@ -3,15 +3,19 @@
     <a class="navbar-brand" [routerLink]="['/home']">VD home</a>
 
     <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/members']">Matches</a>
+      <li class="nav-item" routerLinkActive="active" *ngFor="let menu of links">
+        <a class="nav-link {{menu.icon}}" [routerLink]="[menu.path]"> {{menu.name}}</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/lists']">List</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/messages']">Messages</a>
-      </li>
+
+      <!--<li class="nav-item" routerLinkActive="active">-->
+        <!--<a class="nav-link" [routerLink]="['/members']">Matches</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item" routerLinkActive="active">-->
+        <!--<a class="nav-link" [routerLink]="['/lists']">List</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item" routerLinkActive="active">-->
+        <!--<a class="nav-link" [routerLink]="['/messages']">Messages</a>-->
+      <!--</li>-->
     </ul>
 
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
